@@ -1,19 +1,18 @@
 const express = require("express");
 const path = require("path");
-let db = require("./db/db.json");
+const db = require("./db/db.json");
 const fs = require("fs");
 const util = require("util");
 
-let app = express();
+const app = express();
 
-const writeFileAsync = util.promisify(fs.writeFile);
 const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
+
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
